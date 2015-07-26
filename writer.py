@@ -191,8 +191,8 @@ class Main(QtGui.QMainWindow):
                 indentAction.triggered.connect(self.indent)
 
                 dedentAction = QtGui.QAction(QtGui.QIcon("icons/dedent.png"),"Dedent Area",self)
-                dedentAction.setShortcut("Ctrl+Tab")
-                dedentAction.triggered.connect(self.indent)
+                dedentAction.setShortcut("Shift+Tab")
+                dedentAction.triggered.connect(self.dedent)
                 
                 self.formatbar = self.addToolBar("Format")
                 self.formatbar.addWidget(fontBox)
@@ -474,7 +474,7 @@ class Main(QtGui.QMainWindow):
                 line = cursor.block().text()
 
                 # If the line starts with a tab character, deleteit
-                if line.startswith("\t"):
+                if line.startsWith("\t"):
 
                         # Delete next character
                         cursor.deleteChar()
